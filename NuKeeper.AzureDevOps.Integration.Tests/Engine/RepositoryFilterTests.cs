@@ -39,10 +39,10 @@ namespace NuKeeper.Integration.Tests.Engine
             const string testKeyWithOnlyPublicAccess = "66zm7yzw2xk6ehbbh7y5n6vruazz6mwognbgfqcaqwgyyf6hoh3a";
             var logger = Substitute.For<INuKeeperLogger>();
 
-            var gitHubClient = new AzureDevOpsClient(logger);
-            gitHubClient.Initialise(new AuthSettings(new Uri("https://dev.azure.com/nukeeper"), testKeyWithOnlyPublicAccess));
+            var client = new AzureDevOpsClient(logger);
+            client.Initialise(new AuthSettings(new Uri("https://dev.azure.com/nukeeper"), testKeyWithOnlyPublicAccess));
 
-            return new RepositoryFilter(gitHubClient, logger);
+            return new RepositoryFilter(client, logger);
         }
     }
 }
